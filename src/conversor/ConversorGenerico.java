@@ -34,6 +34,8 @@ public class ConversorGenerico extends javax.swing.JFrame {
         conversores.add(new PulgadasCentimetrosConversor());
         conversores.add(new MetrosKMConversor());
         conversores.add(new KMMetrosConversor());
+        conversores.add(new PesosDolarConversor());
+        conversores.add(new DolarPesosConversor());
         
         for (Conversor conversor : conversores) {
             jComboBoxConversores.addItem(conversor.toString());    
@@ -164,6 +166,16 @@ public class ConversorGenerico extends javax.swing.JFrame {
               {
                    convertirAMetros();
               }
+         else
+               if(conviertoAPesosDolar)
+                 {
+                      convertirADolar();
+                 }
+         else
+                if(conviertoADolarPesos)
+               {
+                   convertirAPesos();
+               }
          
          
     }//GEN-LAST:event_jButtonConvertirActionPerformed
@@ -230,6 +242,41 @@ public class ConversorGenerico extends javax.swing.JFrame {
         //System.out.println(pulg);
         jTextFieldTwo.setText(String.format("%.2f", valor1));
     }
+      
+       private void convertirADolar() {
+        
+           Double pesos;
+        try {
+            pesos = Double.valueOf(jTextFieldOne.getText().replace(',', '.'));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Formato no válido", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Double valor1 = selectedConversor.convertirValor2Valor1(pesos);
+        //System.out.println(pulg);
+        jTextFieldTwo.setText(String.format("%.2f", valor1));
+    }
+       
+        private void convertirAPesos() {
+        
+           Double dolar;
+        try {
+            dolar = Double.valueOf(jTextFieldOne.getText().replace(',', '.'));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Formato no válido", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Double valor1 = selectedConversor.convertirValor1Valor2(dolar);
+        //System.out.println(pulg);
+        jTextFieldTwo.setText(String.format("%.2f", valor1));
+    }
+       
+       
+       
 
     private void jTextFieldOneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldOneFocusLost
 //        conviertoAPulg = true;
@@ -259,37 +306,30 @@ public class ConversorGenerico extends javax.swing.JFrame {
         selectedConversor = conversores.get(selectedIndex);
         clearConvertFlag();
         if(selectedIndex == 0)
-        {   jTextFieldOne.enable();
-            jTextFieldTwo.disable();
-            conviertoAPulg = true;
-            conviertoACen=false;
-            conviertoAMetrosKM = false; 
+        {   
+            selectIndexCero();
         }
         
         if(selectedIndex == 1)
         {
-            jTextFieldTwo.enable();
-            jTextFieldOne.disable();
-            conviertoACen=true;
-            conviertoAMetrosKM = false;
-            conviertoAPulg = false;
+            SelectIndexUno();
         }
          if(selectedIndex == 2)
         {
-            jTextFieldTwo.disable();
-            jTextFieldOne.enable();
-            conviertoAMetrosKM = true;
-            conviertoAPulg = false;
-            conviertoACen = false;
-            
+            SelectIndexDos();
         }
          if(selectedIndex ==3)
          {
-           jTextFieldTwo.disable();
-            jTextFieldOne.enable();
-            conviertoAKMMetros = true;
-            conviertoAPulg = false;
-            conviertoACen = false;
+           SelectIndexTres();
+         }
+         if(selectedIndex ==4)
+         {
+           SelectIndexCuatro();
+         }
+         
+         if(selectedIndex ==5)
+         {
+           SelectIndexQuinto();
          }
          
         clearTxtField();
@@ -299,12 +339,79 @@ public void clearTxtField() {
 		jTextFieldOne.setText(null);
                 jTextFieldTwo.setText(null);
 	}
+
+
 public void clearConvertFlag()
 {
             conviertoAKMMetros = false;
             conviertoAPulg = false;
             conviertoACen = false;
             conviertoAMetrosKM = false;
+            conviertoAPesosDolar = false;
+            conviertoADolarPesos = false;
+}
+
+public void selectIndexCero()
+{
+            jTextFieldOne.enable();
+            jTextFieldTwo.disable();
+            conviertoAPulg = true;
+            conviertoACen=false;
+            conviertoAMetrosKM = false; 
+            conviertoAPesosDolar = false;
+            conviertoADolarPesos = false;
+}
+
+public void SelectIndexUno()
+{
+            jTextFieldTwo.enable();
+            jTextFieldOne.disable();
+            conviertoACen=true;
+            conviertoAMetrosKM = false;
+            conviertoAPulg = false;
+            conviertoAPesosDolar = false;
+            conviertoADolarPesos = false;
+}
+public void SelectIndexDos()
+{
+            jTextFieldTwo.disable();
+            jTextFieldOne.enable();
+            conviertoAMetrosKM = true;
+            conviertoAPulg = false;
+            conviertoACen = false;
+            conviertoAPesosDolar = false;
+            conviertoADolarPesos = false;
+}
+
+public void SelectIndexTres()
+{
+            jTextFieldTwo.disable();
+            jTextFieldOne.enable();
+            conviertoAKMMetros = true;
+            conviertoAPulg = false;
+            conviertoACen = false;
+            conviertoAPesosDolar = false;
+            conviertoADolarPesos = false;
+}
+public void SelectIndexCuatro()
+{
+            jTextFieldTwo.disable();
+            jTextFieldOne.enable();
+            conviertoAKMMetros = true;
+            conviertoAPulg = false;
+            conviertoACen = false;
+            conviertoAPesosDolar = false;
+            conviertoADolarPesos = false;
+}
+public void SelectIndexQuinto()
+{
+            jTextFieldTwo.disable();
+            jTextFieldOne.enable();
+            conviertoAKMMetros = false;
+            conviertoAPulg = false;
+            conviertoACen = false;
+            conviertoADolarPesos = true;
+            conviertoAPesosDolar = false;
 }
     /**
      * @param args the command line arguments
@@ -346,7 +453,8 @@ public void clearConvertFlag()
     private boolean conviertoACen;
     private boolean conviertoAMetrosKM;
     private boolean conviertoAKMMetros;
-    
+    private boolean conviertoAPesosDolar;
+    private boolean conviertoADolarPesos;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConvertir;
     private javax.swing.JComboBox<String> jComboBoxConversores;
@@ -355,6 +463,8 @@ public void clearConvertFlag()
     private javax.swing.JTextField jTextFieldOne;
     private javax.swing.JTextField jTextFieldTwo;
     // End of variables declaration//GEN-END:variables
+
+   
 
    
 
