@@ -47,8 +47,6 @@ public class ConversorGenerico extends javax.swing.JFrame {
         // Valor por Defecto
         selectedConversor = conversores.get(0);
         jLabel1.setText(selectedConversor.getLabelValor1());
-
-        selectedConversor = conversores.get(0);
         jLabel2.setText(selectedConversor.getLabelValor2());
         
         selectIndex();
@@ -192,9 +190,9 @@ public class ConversorGenerico extends javax.swing.JFrame {
     private void jComboBoxConversoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxConversoresItemStateChanged
 
         int selectedIndex = jComboBoxConversores.getSelectedIndex();
-        jLabel1.setText(conversores.get(selectedIndex).getLabelValor1());
-        jLabel2.setText(conversores.get(selectedIndex).getLabelValor2());
         selectedConversor = conversores.get(selectedIndex);
+        jLabel1.setText(selectedConversor.getLabelValor1());
+        jLabel2.setText(selectedConversor.getLabelValor2());
         clearTxtField();
 
     }//GEN-LAST:event_jComboBoxConversoresItemStateChanged
