@@ -9,29 +9,28 @@ package conversor;
  *
  * @author Administrador
  */
-public class PesosDolarConversor extends Conversor {
+public class EuroPesosConversor extends Conversor {
 
-    private static final double UN_PESO = 85.0;
-    private static final double UN_DOLAR = 85.0;
+    private static final double VALOR_PESO_EURO = 96.5;
 
     @Override
     public String getLabelValor1() {
-        return "Pesos";
+        return "Euro";
     }
 
     @Override
     public String toString() {
-        return "Pesos a Dolar ";
+        return "Euro a Pesos ";
     }
 
     @Override
     public String getLabelValor2() {
-        return "Dolar";
+        return "Pesos";
     }
 
     @Override
-    public Double convertirValor(Double pesos) {
-        return pesos / UN_DOLAR;
+    public Double convertirValor(Double CantidadDeEuros) {
+        return CantidadDeEuros * VALOR_PESO_EURO;
     }
 
 }

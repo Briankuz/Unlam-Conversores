@@ -10,41 +10,30 @@ package conversor;
  * @author Administrador
  */
 public class PulgadasCentimetrosConversor extends Conversor {
- 
+
     private static final double UNA_PULGADA = 2.54;
     private static final double UN_CENTIMETRO = 2.54;
 
     @Override
     public String getLabelValor1() {
-        
-        return "Centímetros";
+
+        return "Pulgadas";
     }
-    
 
     @Override
     public String toString() {
         return "Pulgadas a Centimetros ";
     }
-    
-
 
     @Override
-    public Double convertirValor2Valor1(Double cent) {
-        return cent / UNA_PULGADA;
-       
+    public Double convertirValor(Double pulg) {
+        return pulg / UN_CENTIMETRO;
+
     }
 
     @Override
     public String getLabelValor2() {
-           return "Pulgadas";
+        return "Centímetros";
     }
 
-    @Override
-    public Double convertirValor1Valor2(Double pulg) {
-        return pulg * UN_CENTIMETRO ;
-         
-    }
-
-   
-    
 }

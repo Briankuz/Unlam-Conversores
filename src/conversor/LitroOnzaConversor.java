@@ -29,13 +29,8 @@ public class LitroOnzaConversor extends Conversor {
     }
 
     @Override
-    public Double convertirValor1Valor2(Double litros) {
-        return litros * CONVERSOR;
-    }
-
-    @Override
-    public Double convertirValor2Valor1(Double onzas) {
-        return onzas / CONVERSOR;
+    public Double convertirValor(Double litro) {
+        return litro * CONVERSOR;
     }
 
 }

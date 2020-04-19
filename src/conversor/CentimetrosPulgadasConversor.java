@@ -16,37 +16,24 @@ public class CentimetrosPulgadasConversor extends Conversor {
 
     @Override
     public String getLabelValor1() {
-        
+
         return "Centímetros";
     }
-    
 
     @Override
     public String toString() {
         return "Centimetros a Pulgadas ";
     }
-    
-
-
-    @Override
-    public Double convertirValor1Valor2(Double pulg) {
-        return pulg * UN_CENTIMETRO ;
-         
-    }
-
 
     @Override
     public String getLabelValor2() {
-           return "Pulgadas";
+        return "Pulgadas";
     }
 
-     @Override
-    public Double convertirValor2Valor1(Double cent) {
-        return cent / UNA_PULGADA;
-       
+    @Override
+    public Double convertirValor(Double cent) {
+        return cent * UNA_PULGADA;
+
     }
-   
-    
-    
-    
+
 }

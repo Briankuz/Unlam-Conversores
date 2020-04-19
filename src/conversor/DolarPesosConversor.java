@@ -10,7 +10,8 @@ package conversor;
  * @author Administrador
  */
 public class DolarPesosConversor extends Conversor {
-     private static final double UN_PESO = 85.0;
+
+    private static final double UN_PESO = 85.0;
     private static final double UN_DOLAR = 85.0;
 
     @Override
@@ -18,15 +19,9 @@ public class DolarPesosConversor extends Conversor {
         return "Dolar";
     }
 
-     @Override
+    @Override
     public String toString() {
         return "Dolar a Pesos ";
-    }
-    
-    
-    @Override
-    public Double convertirValor1Valor2(Double dolar) {
-       return UN_PESO * dolar;
     }
 
     @Override
@@ -35,8 +30,8 @@ public class DolarPesosConversor extends Conversor {
     }
 
     @Override
-    public Double convertirValor2Valor1(Double pesos) {
-        return pesos/UN_DOLAR;
+    public Double convertirValor(Double dolar) {
+        return UN_PESO * dolar;
     }
-    
+
 }
