@@ -39,6 +39,8 @@ public class ConversorGenerico extends javax.swing.JFrame {
         conversores.add(new OnzaLitroConversor());
         conversores.add(new PesosEuroConversor());
         conversores.add(new EuroPesosConversor());
+        conversores.add(new KMMillasConversor());
+        conversores.add(new MillasKMConversor());
 
         for (Conversor conversor : conversores) {
             jComboBoxConversores.addItem(conversor.toString());
@@ -171,13 +173,11 @@ public class ConversorGenerico extends javax.swing.JFrame {
 
 
     private void jTextFieldOneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldOneFocusLost
-//        conviertoAPulg = true;
-//        conviertoAMetrosKM = true;
+
     }//GEN-LAST:event_jTextFieldOneFocusLost
 
     private void jTextFieldTwoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldTwoFocusLost
-//        conviertoAPulg = false;
-//        conviertoAMetrosKM = false;
+
     }//GEN-LAST:event_jTextFieldTwoFocusLost
 
     private void jTextFieldOneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOneKeyPressed
